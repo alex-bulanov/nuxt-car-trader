@@ -1,4 +1,33 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true }
+	devtools: { enabled: true },
+	devServer: {
+		host: '0.0.0.0'
+	},
+	app: {
+		pageTransition: { name: 'page', mode: 'out-in' },
+		head: {
+			titleTemplate: '%s | Cartrader',
+			meta: [],
+			link: []
+		}
+	},
+	modules: ['@nuxtjs/stylelint-module', '@nuxtjs/eslint-module', '@nuxt/ui'],
+	css: ['~/assets/scss/main.scss'],
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					additionalData: `
+						@use "@/assets/scss/general/variables.scss" as *;
+					`
+				}
+			}
+		}
+	},
+	runtimeConfig: {
+		public: {
+			baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+		}
+	}
 })

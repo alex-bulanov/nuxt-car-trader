@@ -5,7 +5,7 @@ useHead({
 </script>
 
 <template>
-	<div>
+	<div class="page-home">
 		<!-- HEADER -->
 		<header class="header fixed top-0 left-0 z-50 w-full border-b py-4 bg-white shadow">
 			<UContainer>

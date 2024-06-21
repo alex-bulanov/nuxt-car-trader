@@ -5,7 +5,7 @@
 		<UContainer>
 			<div class="app-header__wrapper flex justify-between items-center gap-1">
 				<div class="app-header__logo logo">
-					<a class="logo__link font-mono text-2xl" href="/">Cartrader</a>
+					<NuxtLink class="logo__link font-mono text-2xl" to="/">Cartrader</NuxtLink>
 				</div>
 			</div>
 		</UContainer>

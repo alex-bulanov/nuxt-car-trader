@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+	description: string
+}
+
+defineProps<Props>()
+</script>
 
 <template>
 	<div class="car__description col-span-4 md:col-span-12">

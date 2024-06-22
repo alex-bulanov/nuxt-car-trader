@@ -32,7 +32,6 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
 						rounded: 'rounded-full',
 						icon: { trailing: { pointer: '', padding: 'p-0' } }
 					}"
-					@keyup.enter="onSubmit"
 				>
 					<template #trailing>
 						<UButton

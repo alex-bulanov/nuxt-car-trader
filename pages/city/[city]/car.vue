@@ -1,15 +1,11 @@
 <script setup lang="ts">
 const route = useRoute()
 
-useHead({
-	title: `${route.params.make ? toTitleCase(route.params.make) + ' in ' : 'Cars in '} ${toTitleCase(route.params.city)}`
-})
+const { toTitleCase } = useUtilities()
 
-function toTitleCase(str: string): string {
-	return str.replace(/\w\S*/g, function (txt: string): string {
-		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-	})
-}
+useHead({
+	title: `${route.params.make ? toTitleCase(route.params.make as string) + ' in ' : 'Cars in '} ${toTitleCase(route.params.city as string)}`
+})
 </script>
 
 <template>

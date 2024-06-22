@@ -1,6 +1,9 @@
 <script setup lang="ts">
-// eslint-disable-next-line vue/require-default-prop
-defineProps({ error: Object })
+const error = useError()
+
+useHead({
+	title: 'Error'
+})
 
 const handleError = () => {
 	clearError({

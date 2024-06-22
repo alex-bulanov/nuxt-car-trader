@@ -11,6 +11,13 @@ useHead({
 const car = computed(() => {
 	return cars.find(car => String(car.id) === route.params.id)
 })
+
+if (!car.value) {
+	throw createError({
+		status: 404,
+		statusMessage: `Car with id of ${route.params.id} doesn not exist`
+	})
+}
 </script>
 
 <template>

@@ -12,7 +12,7 @@ defineProps<Props>()
 	<div class="car-hero col-span-4 md:col-span-12">
 		<div class="car-hero__wrapper flex flex-col space-y-4">
 			<div class="car-hero__image-container">
-				<img class="car-hero__image w-full h-full object-cover" :src="car.url" alt="" />
+				<NuxtImg class="car-hero__image w-full h-full object-cover" :src="car.url" alt="" />
 			</div>
 			<h1 class="car-hero__title text-4xl font-semibold">{{ car.name }}</h1>
 			<div

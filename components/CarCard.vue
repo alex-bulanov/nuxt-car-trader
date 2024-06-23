@@ -15,7 +15,7 @@ defineProps<Props>()
 	>
 		<div class="car-card__wrapper grid grid-cols-1 gap-y-6 min-h-[200px] sm:grid-cols-12 sm:gap-x-4">
 			<div class="car-card__image-container col-span-1 sm:col-span-5">
-				<img class="car-card__image w-full h-full object-cover" :src="car.url" alt="" />
+				<NuxtImg class="car-card__image w-full h-full object-cover" :src="car.url" alt="" />
 			</div>
 			<div class="car-card__body col-span-1 sm:col-span-7">
 				<div class="car-card__text h-full py-2.5">

@@ -12,7 +12,7 @@ export default defineNuxtConfig({
 			link: []
 		}
 	},
-	modules: ['@nuxtjs/stylelint-module', '@nuxtjs/eslint-module', '@nuxt/ui', '@nuxt/image'],
+	modules: ['@nuxtjs/stylelint-module', '@nuxtjs/eslint-module', '@nuxt/ui', '@nuxt/image', '@vueuse/nuxt'],
 	css: ['~/assets/scss/main.scss'],
 	colorMode: {
 		preference: 'light'

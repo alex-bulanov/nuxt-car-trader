@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+const router = useRouter()
 const { makes } = useCars()
 
 const modal = reactive({
@@ -9,6 +10,24 @@ const modal = reactive({
 })
 
 const city = ref<string>()
+const priceRange = reactive({
+	min: undefined,
+	max: undefined
+})
+
+const priceRangeText = computed(() => {
+	const minPrice = route.query.minPrice
+	const maxPrice = route.query.maxPrice
+
+	if (!minPrice && !maxPrice) return 'Any'
+	else if (!minPrice && maxPrice) {
+		return `< $${maxPrice}`
+	} else if (minPrice && !maxPrice) {
+		return `> $${minPrice}`
+	} else {
+		return `$${minPrice} - $${maxPrice}`
+	}
+})
 
 const handleUpdateModal = (key: keyof typeof modal) => {
 	modal[key] = !modal[key]
@@ -31,6 +50,21 @@ const handleChangeLocation = () => {
 const handleChangeMake = (make: string) => {
 	handleUpdateModal('make')
 	navigateTo(`/city/${route.params.city}/car/${make}`)
+}
+
+const handleChangePrice = () => {
+	handleUpdateModal('price')
+
+	if (priceRange.min && priceRange.max) {
+		if (priceRange.min > priceRange.max) return
+	}
+
+	router.push({
+		query: {
+			minPrice: priceRange.min,
+			maxPrice: priceRange.max
+		}
+	})
 }
 </script>
 
@@ -78,15 +112,21 @@ const handleChangeMake = (make: string) => {
 			<!-- Price -->
 			<div class="aside-bar__row relative grow flex justify-between space-x-4 p-5">
 				<div class="aside-bar__row-title font-semibold">Price</div>
-				<div class="aside-bar__row-value text-blue-400 capitalize">Any</div>
-				<!-- <div
-										class="absolute top-full right-0 border w-full p-5 shadow md:top-1/2 md:-right-[calc(100%_+_16px)]"
-									>
-										<UInput />
-										<div class="mt-4">
-											<UButton block label="Apply" />
-										</div>
-									</div> -->
+				<div class="aside-bar__row-value text-blue-400 capitalize" @click="handleUpdateModal('price')">
+					{{ priceRangeText }}
+				</div>
+				<div
+					v-if="modal.price"
+					class="absolute top-full right-0 z-20 border w-full p-5 bg-white shadow md:top-1/2 md:-right-[calc(100%_+_16px)]"
+				>
+					<div class="grid grid-cols-2 gap-4">
+						<UInput v-model="priceRange.min" type="number" placeholder="Min" />
+						<UInput v-model="priceRange.max" type="number" placeholder="Max" />
+					</div>
+					<div class="mt-4">
+						<UButton block label="Apply" @click="handleChangePrice" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

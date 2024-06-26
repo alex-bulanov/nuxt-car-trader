@@ -14,6 +14,7 @@
 		"lintfix": "prettier --write --list-different . && npm run lint:js --fix  && npm run lint:style"
 	},
 	"dependencies": {
+		"@iconify-json/logos": "^1.1.43",
 		"@nuxt/image": "^1.7.0",
 		"@nuxt/ui": "^2.15.2",
 		"@nuxtjs/supabase": "^1.2.2",

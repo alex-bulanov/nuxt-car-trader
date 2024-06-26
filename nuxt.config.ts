@@ -12,7 +12,14 @@ export default defineNuxtConfig({
 			link: []
 		}
 	},
-	modules: ['@nuxtjs/stylelint-module', '@nuxtjs/eslint-module', '@nuxt/ui', '@nuxt/image', '@vueuse/nuxt'],
+	modules: [
+		'@nuxtjs/stylelint-module',
+		'@nuxtjs/eslint-module',
+		'@nuxtjs/supabase',
+		'@nuxt/ui',
+		'@nuxt/image',
+		'@vueuse/nuxt'
+	],
 	css: ['~/assets/scss/main.scss'],
 	colorMode: {
 		preference: 'light'
@@ -32,5 +39,8 @@ export default defineNuxtConfig({
 		public: {
 			baseUrl: process.env.BASE_URL || 'http://localhost:3000'
 		}
+	},
+	supabase: {
+		redirect: false
 	}
 })

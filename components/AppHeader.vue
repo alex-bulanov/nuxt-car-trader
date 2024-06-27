@@ -24,7 +24,7 @@ const handleLogout = async () => {
 					<NuxtLink class="app-header__profile-link text-sm" to="/profile/listings/">Profile</NuxtLink>
 					<UButton color="red" variant="ghost" label="logout" @click="handleLogout" />
 				</div>
-				<div v-else class="app-header__profile">
+				<div v-else class="app-header__profile flex items-center space-x-4">
 					<NuxtLink class="app-header__profile-link text-sm" to="/login/">Login</NuxtLink>
 				</div>
 			</div>

@@ -1,23 +1,14 @@
 <script setup lang="ts">
 const route = useRoute()
-const { cars } = useCars()
-
 const { toTitleCase } = useUtilities()
 
 useHead({
 	title: `${toTitleCase(route.params.name as string)}`
 })
 
-const car = computed(() => {
-	return cars.find(car => String(car.id) === route.params.id)
-})
+const { id } = route.params as { id: string }
 
-if (!car.value) {
-	throw createError({
-		status: 404,
-		statusMessage: `Car with id of ${route.params.id} doesn not exist`
-	})
-}
+const { car } = await useFetchCar(id)
 </script>
 
 <template>

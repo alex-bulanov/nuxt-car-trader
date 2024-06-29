@@ -1,7 +1,7 @@
 import type Car from '@/types/Car'
 
 export const useFetchCars = async (city: string, filters: any) => {
-	const { data, error } = await useFetch(`/api/cars/${city}`, {
+	const { data, error } = await useFetch(`/api/cars/${city}/`, {
 		params: {
 			...filters
 		}

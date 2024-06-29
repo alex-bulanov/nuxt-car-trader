@@ -1,6 +1,6 @@
 import type Car from '@/types/Car'
 
-export const useFetchCars = async (city: string, filters: any): Promise<Car[]> => {
+export const useFetchCars = async (city: string, filters: any) => {
 	const { data, error } = await useFetch(`/api/cars/${city}`, {
 		params: {
 			...filters
@@ -13,5 +13,5 @@ export const useFetchCars = async (city: string, filters: any): Promise<Car[]> =
 
 	const cars = data.value as Car[]
 
-	return cars
+	return { cars }
 }

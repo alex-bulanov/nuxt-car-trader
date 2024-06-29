@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { cars } = useCars()
+import type Car from '@/types/Car'
+interface Props {
+	cars: Car[]
+}
+
+defineProps<Props>()
 
 const favorite = useLocalStorage<Record<string, boolean>>('favorite', {})
 
